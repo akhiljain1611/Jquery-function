@@ -35,3 +35,26 @@
                         $('#CP_Main_btnCancelItem').attr("disabled", "disabled"); //# is missing
                     }
                 }
+
+
+$("#CP_Main_btnCancelItem").button().click(function () {
+
+                    var checkedCount = $('#CP_Main_gvPOItems input[type=checkbox]:checked').length;
+
+                    var isDisabled = $(checkedCount).is(':disabled');
+                    // alert(isDisabled);
+                    var status = false;
+                    if (checkedCount == 0 && isDisabled) {
+                        alert('No check-box is selected');
+                        status = false;
+                    }
+                    else if (!isDisabled && checkedCount > 0) {
+                        var r = confirm("Are you sure you want to cancel selected Record(s)?'");
+                        if (r == true) {
+
+                            status = true;
+                            GetCheckedRows();
+                        }
+                    }
+                    return status;
+                });
