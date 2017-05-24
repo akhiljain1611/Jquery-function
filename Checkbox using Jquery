@@ -1,0 +1,37 @@
+  $(document).ready(function () {
+                //            $('#CP_Main_gvPOItems input[type=checkbox]').change(function () {
+                //                disableCheckbox();
+                //            });
+                var checkedCount, checkboxCount, disableCheckBox = 0;
+                var text = $("#CP_Main_lblStatus").val().trim();
+                var text1 = $("#CP_Main_txtPONumber").val().trim();
+                var text2 = text1.substring(0, 2);
+                //var txt = $("#<%=lblStatus.ClientID%>")
+                //                        alert(text);
+                //                        alert(text1);
+                //                        alert(text2);
+                disableCheckbox = function () {
+                    //checked check-boxes length
+                    checkedCount = $('#CP_Main_gvPOItems input[type=checkbox]:checked').length;
+
+                    //check-boxes length
+                    checkboxCount = $('#CP_Main_gvPOItems input[type=checkbox]').length;
+
+                    //if no check-box is selected then alert
+                    //                if (checkedCount == 0) {
+                    //                    alert('No check-box is selected');
+                    // }
+                    //check for all disabled check-boxes
+                    //var disableCheckBox = 0;
+                    $('#CP_Main_gvPOItems input[type=checkbox]').each(function () {
+                        if ($(this).is(':disabled')) {
+                            disableCheckBox++;
+                        }
+                    });
+
+                    //if all check-boxes are disabled then disable button
+                    if (checkboxCount == disableCheckBox) {
+
+                        $('#CP_Main_btnCancelItem').attr("disabled", "disabled"); //# is missing
+                    }
+                }
