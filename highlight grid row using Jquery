@@ -1,0 +1,11 @@
+function hightlightrow() {
+  var index = "'Select$"+ $("#<%= highlightedRow.ClientID%>").val() +"'";
+  $("#<%= UltraWebGrid1.ClientID%>").find("tr").each(function () {
+    if ($(this).attr('onclick')) {
+      if ($(this).attr('onclick').indexOf(index) > 0) {
+        $(this).addClass("highlight");
+      } else {
+        $(this).removeClass("highlight");
+      }
+    }
+  });
